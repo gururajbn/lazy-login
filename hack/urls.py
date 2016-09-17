@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from lazy import urls
+from lazy.views import lazy_login
+from django.views.decorators.csrf import csrf_exempt
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^lazylogin/$', csrf_exempt(lazy_login.as_view()))
 ]
